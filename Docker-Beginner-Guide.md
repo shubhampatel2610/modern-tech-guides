@@ -110,7 +110,7 @@ FROM ba-common-docker-stable-local.artifactory-na.honeywell.com/ba-common.ba-nod
 # ========================================
 # STEP 2: Add Metadata Labels
 # ========================================
-LABEL pipelineName="rbac" \
+LABEL pipelineName="pipeline-name" \
     pipelineKey="ZSHELGHC" \
     offeringKey="RIDOOYVI"
 
