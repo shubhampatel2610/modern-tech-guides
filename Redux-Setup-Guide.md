@@ -170,14 +170,6 @@ export const CounterActionTypes = {
 - ✅ Autocomplete in IDE
 - ✅ Single source of truth
 
-**Example from your project:**
-```typescript
-// fsautocomm-action-types.tsx
-export const GET_SCHEDULE_LIST = 'GET_SCHEDULE_LIST';
-export const GET_SCHEDULE_TOTAL_COUNT = 'GET_SCHEDULE_TOTAL_COUNT';
-export const IS_SCHEDULE_DELETE_LOADING = 'IS_SCHEDULE_DELETE_LOADING';
-```
-
 ---
 
 ### **Step 2: Create Action Creators**
@@ -224,20 +216,6 @@ export type CounterAction =
   | ReturnType<typeof incrementByAmount>
   | ReturnType<typeof setLoading>
   | ReturnType<typeof setError>;
-```
-
-**Example from your project:**
-```typescript
-// fsautocomm-action-creator.tsx
-export const dispatchScheduleDetails = (response: any) => ({
-    type: ActionTypes.GET_SCHEDULE_LIST,
-    payload: response
-});
-
-export const dispatchScheduleTotalCount = (response: any) => ({
-    type: ActionTypes.GET_SCHEDULE_TOTAL_COUNT,
-    payload: response
-});
 ```
 
 ---
@@ -397,24 +375,6 @@ export const store = configureStore();
 2. **`thunk`** - Middleware for async actions
 3. **`composeEnhancers`** - Adds Redux DevTools support
 4. **`applyMiddleware`** - Adds middleware to store
-
-**Example from your project:**
-```typescript
-// configure-store.tsx
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { FSAutoComReducer } from './fsautocomm-reducer';
-
-export const rootReducers = combineReducers({
-    fsautocomm: FSAutoComReducer,
-    // ... other reducers
-});
-
-export default function configureStore() {
-    const middlewareEnhancer = applyMiddleware(thunk);
-    const store = createStore(rootReducers, composeWithDevTools(middlewareEnhancer));
-    return store;
-}
-```
 
 ---
 
