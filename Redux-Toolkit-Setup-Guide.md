@@ -37,33 +37,33 @@ This guide explains how to implement a counter app using Redux Toolkit, step by 
 
 **3 Separate Files:**
 
-**1. `fsautocomm-action-types.tsx`** - Action constants
+**1. `counter-action-types.tsx`** - Action constants
 ```typescript
-export const GET_SCHEDULE_LIST = 'GET_SCHEDULE_LIST';
-export const GET_SCHEDULE_TOTAL_COUNT = 'GET_SCHEDULE_TOTAL_COUNT';
-export const IS_SCHEDULE_DELETE_LOADING = 'IS_SCHEDULE_DELETE_LOADING';
+export const COUNTER = 'COUNTER';
+export const INCREASE_COUNT = 'INCREASE_COUNT';
+export const DECREASE_COUNT = 'DECREASE_COUNT';
 ```
 
-**2. `fsautocomm-action-creator.tsx`** - Action creators
+**2. `counter-action-creator.tsx`** - Action creators
 ```typescript
-export const dispatchScheduleDetails = (response: any) => ({
-    type: GET_SCHEDULE_LIST,
+export const increaseCount = (response: any) => ({
+    type: INCREASE_COUNT,
     payload: response
 });
 
-export const dispatchScheduleTotalCount = (response: any) => ({
-    type: GET_SCHEDULE_TOTAL_COUNT,
+export const decreaseCount = (response: any) => ({
+    type: DECREASE_COUNT,
     payload: response
 });
 ```
 
-**3. `fsautocomm-reducer.tsx`** - Reducer
+**3. `counter-reducer.tsx`** - Reducer
 ```typescript
-export const FSAutoComReducer = (state = initialState, action: any) => {
-    if (action.type === ActionTypes.GET_SCHEDULE_LIST) {
-        return { ...state, scheduleList: action.payload };
-    } else if (action.type === ActionTypes.GET_SCHEDULE_TOTAL_COUNT) {
-        return { ...state, scheduleTotalCount: action.payload };
+export const CounterReducer = (state = initialState, action: any) => {
+    if (action.type === ActionTypes.INCREASE_COUNT) {
+        return { ...state, counterValue: action.payload };
+    } else if (action.type === ActionTypes.DECREASE_COUNT) {
+        return { ...state, counterValue: action.payload };
     }
     // ... more conditions
     return state;
@@ -75,7 +75,7 @@ export const FSAutoComReducer = (state = initialState, action: any) => {
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 
 export const rootReducers = combineReducers({
-    fsautocomm: FSAutoComReducer,
+    counterStore: CounterReducer,
     // ... other reducers
 });
 
